@@ -36,12 +36,23 @@ hold off
 
 figure;
 subplot(1,2,1);
-histogram(Z(:,1), 30);
-title('Histograma de Z_1');
+histogram(Z(:,1), 30, 'Normalization', 'pdf');
+hold on;
+z1_vals = linspace(-4, 4, 100);
+pdf_z1 = normpdf(z1_vals, 0, 1); % Densidad teórica N(0,1)
+plot(z1_vals, pdf_z1, 'r-', 'LineWidth', 2);
+title('Histograma de Z_1 con densidad teórica');
+hold off;
 
 subplot(1,2,2);
-histogram(Z(:,2), 30);
-title('Histograma de Z_2');
+histogram(Z(:,2), 30, 'Normalization', 'pdf');
+hold on;
+z2_vals = linspace(-4, 4, 100);
+pdf_z2 = normpdf(z2_vals, 0, 1); % Densidad teórica N(0,1)
+plot(z2_vals, pdf_z2, 'r-', 'LineWidth', 2);
+title('Histograma de Z_2 con densidad teórica');
+hold off;
+
 
 
 
@@ -86,12 +97,21 @@ hold off
 
 
 %grafico los histogramas
-
 figure;
 subplot(1,2,1);
-histogram(Y(:,1), 30);
-title('Histograma de Y_1');
+histogram(Y(:,1), 30, 'Normalization', 'pdf');
+hold on;
+y1_vals = linspace(-4, 4, 100);
+pdf_y1 = normpdf(y1_vals, mu_y(1), sqrt(C_y(1,1))); % Densidad teórica N(0.8, sqrt(0.7))
+plot(y1_vals, pdf_y1, 'r-', 'LineWidth', 2);
+title('Histograma de Y_1 con densidad teórica');
+hold off;
 
 subplot(1,2,2);
-histogram(Y(:,2), 30);
-title('Histograma de Y_2');
+histogram(Y(:,2), 30, 'Normalization', 'pdf');
+hold on;
+y2_vals = linspace(-4, 6, 100);
+pdf_y2 = normpdf(y2_vals, mu_y(2), sqrt(C_y(2,2))); % Densidad teórica N(1, sqrt(1.75))
+plot(y2_vals, pdf_y2, 'r-', 'LineWidth', 2);
+title('Histograma de Y_2 con densidad teórica');
+hold off;
